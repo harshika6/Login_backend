@@ -82,19 +82,20 @@ app.post('/signin',(req,res)=>{
       res.json(err)
     }
     else{
+      console.log(doc);
      doc.map((i,index)=>{
+
        if(i.email===email){
         if(bcrypt.compareSync(pass,i.pass))
         {
-          res.json({email:email,name:i.fname})
+          res.json({email:email})
+          console.log(email);
         }
         else{
           res.json("wrong");
         }
        }
-       else{
-          res.json("wrong");
-       }
+      
      })
     }
   })
